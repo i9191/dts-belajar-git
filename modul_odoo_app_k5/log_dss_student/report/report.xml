@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="my_model_report"
+        model="x_my_model"
+        string="Print PDF"
+        report_type="qweb-pdf"
+        name="my_module.my_model_report"
+        file="my_module.my_model_report"
+    />
+</odoo>

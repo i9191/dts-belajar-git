@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate='1'>
+        <!-- stage records -->
+        <record id="data_matkul_1" model="mahasiswa.data.matkul">
+            <field name="kode">RTI157001</field>
+            <field name="matkul">Manajemen Proyek</field>
+            <field name="sks">2</field>
+            <field name="jam">4</field>
+        </record>
+        <record id="data_matkul_2" model="mahasiswa.data.matkul">
+            <field name="kode">RTI157002</field>
+            <field name="matkul">Keamanan Informasi</field>
+            <field name="sks">2</field>
+            <field name="jam">4</field>
+        </record>
+        <record id="data_matkul_3" model="mahasiswa.data.matkul">
+            <field name="kode">RTI157003</field>
+            <field name="matkul">E-Business</field>
+            <field name="sks">2</field>
+            <field name="jam">4</field>
+        </record>
+        <record id="data_matkul_4" model="mahasiswa.data.matkul">
+            <field name="kode">RTI157004</field>
+            <field name="matkul">Pemrograman Platform Bergerak (Mobile)</field>
+            <field name="sks">3</field>
+            <field name="jam">6</field>
+        </record>
+        <record id="data_matkul_5" model="mahasiswa.data.matkul">
+            <field name="kode">RTI157005</field>
+            <field name="matkul">Sistem Pendukung Keputusan</field>
+            <field name="sks">3</field>
+            <field name="jam">6</field>
+        </record>
+        <record id="data_matkul_6" model="mahasiswa.data.matkul">
+            <field name="kode">RTI157006</field>
+            <field name="matkul">Pengolahan Citra Digital</field>
+            <field name="sks">3</field>
+            <field name="jam">6</field>
+        </record>
+        <record id="data_matkul_7" model="mahasiswa.data.matkul">
+            <field name="kode">RTI157007</field>
+            <field name="matkul">Proyek Tingkat III</field>
+            <field name="sks">3</field>
+            <field name="jam">8</field>
+        </record>
+    </data>
+</odoo>

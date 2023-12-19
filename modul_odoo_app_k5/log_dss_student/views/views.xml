@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_kanban_my_model" model="ir.ui.view">
+        <field name="name">x_my_model.kanban</field>
+        <field name="model">x_my_model</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name1"/>
+                <field name="value1"/>
+                <field name="name2"/>
+                <field name="value2"/>
+                <field name="name3"/>
+                <field name="value3"/>
+                <field name="name4"/>
+                <field name="value4"/>
+                <field name="name5"/>
+                <field name="value5"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_record_top mb16">
+                                <table>
+                                    <tr>
+                                        <td><strong>Name 1:</strong></td>
+                                        <td><field name="name1"/></td>
+                                        <td><strong>Value 1:</strong></td>
+                                        <td><field name="value1"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Name 2:</strong></td>
+                                        <td><field name="name2"/></td>
+                                        <td><strong>Value 2:</strong></td>
+                                        <td><field name="value2"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Name 3:</strong></td>
+                                        <td><field name="name3"/></td>
+                                        <td><strong>Value 3:</strong></td>
+                                        <td><field name="value3"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Name 4:</strong></td>
+                                        <td><field name="name4"/></td>
+                                        <td><strong>Value 4:</strong></td>
+                                        <td><field name="value4"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Name 5:</strong></td>
+                                        <td><field name="name5"/></td>
+                                        <td><strong>Value 5:</strong></td>
+                                        <td><field name="value5"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Ubah action_my_model untuk menambahkan tampilan kanban -->
+    <record id="action_my_model" model="ir.actions.act_window">
+        <field name="name">My Model</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">x_my_model</field>
+        <field name="view_mode">kanban,tree,form</field>  <!-- Tambahkan kanban di sini -->
+    </record>
+
+    <menuitem id="menu_model" name="Model" action="action_my_model"/>
+</odoo>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_akademik_tree" model="ir.ui.view">
+            <field name="name">mahasiswa.dataakademik.tree</field>
+            <field name="model">mahasiswa.dataakademik</field>
+            <field name="arch" type="xml">
+                <tree string="Data Akademik Mahasiswa">
+                    <field name="nim"/>
+                    <field name="nama"/>
+                    <field name="nilai"/>
+                    <field name="prestasi"/>
+                    <field name="kompen"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_akademik_form" model="ir.ui.view">
+            <field name="name">mahasiswa.dataakademik.form</field>
+            <field name="model">mahasiswa.dataakademik</field>
+            <field name="arch" type="xml">
+                <form string="Data Akademik Mahasiswa">
+                    <sheet>
+                        <group>
+                            <field name="nim"/>
+                            <field name="nama"/>
+                            <field name="matkul"/>
+                            <field name="nilai2"/>
+                            <field name="prestasi"/>
+                            <field name="kompen"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_akademik_pivot" model="ir.ui.view">
+            <field name="name">mahasiswa.dataakademik.pivot</field>
+            <field name="model">mahasiswa.dataakademik</field>
+            <field name="arch" type="xml">
+                <pivot string="Data Akademik Mahasiswa">
+                    <field name="nim"/>
+                    <field name="nama" type="row"/>
+                    <field name="matkul" type="col"/>
+                    <field name="nilai2" type="measure"/>
+                    <field name="prestasi"/>
+                    <field name="kompen"/>
+                </pivot>
+                <!-- <pivot string="Data Akademik Mahasiswa" default_measure="nilai2">
+                    <field name="nama" type="row"/>
+                    <field name="matkul" type="col"/>
+                    <field name="nilai2" type="measure"/>
+                </pivot> -->
+            </field>
+        </record>
+
+        <record id="view_akademik_read_csv" model="ir.ui.view">
+            <field name="name">mahasiswa.dataakademik.read_csv</field>
+            <field name="model">wizard.dataakademik.csv</field>
+            <field name="arch" type="xml">
+                <form string="Baca Data Akademik Mahasiswa dari CSV">
+                    <sheet>
+                        <group>
+                            <field name="file_csv" widget="binary" string="File CSV"/>
+                        </group>
+                        <footer>
+                            <button name="read_csv" string="Baca Data" type="object" class="btn-primary"/>
+                            <button string="Close" class="btn-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_akademik" model="ir.actions.act_window">
+            <field name="name">Data Akademik</field>
+            <field name="res_model">mahasiswa.dataakademik</field>
+            <field name="view_mode">pivot,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Klik tombol Buat untuk menambahkan data akademik mahasiswa baru.
+                </p>
+            </field>
+        </record>
+        
+        <record id="action_akademik_read_csv" model="ir.actions.act_window">
+            <field name="name">Baca Data Akademik Mahasiswa dari CSV</field>
+            <field name="res_model">wizard.dataakademik.csv</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_akademik_read_csv"/>
+        </record>
+
+        <record id="ir_actions_akademik_read_csv" model="ir.actions.server">
+            <field name="name">Baca Data Akademik Mahasiswa dari CSV</field>
+            <field name="model_id" ref="model_mahasiswa_dataakademik"/>
+            <field name="state">code</field>
+            <field name="code">action = model.action_akademik_read_csv()</field>
+            <field name="binding_model_id" ref="model_mahasiswa_dataakademik"/>
+            <field name="binding_type">action</field>
+        </record>
+
+        <!-- definisikan menu untuk mengakses action -->
+        <menuitem id="menu_akademik" name="Data Akademik Mahasiswa" action="action_akademik"/>
+    </data>
+    <record id="akademik_tree_inherit_js_class" model="ir.ui.view">
+        <field name="name">mahasiswa.dataakademik.tree.inherit</field>
+        <field name="model">mahasiswa.dataakademik</field>
+        <field name="inherit_id" ref="import_data_mahasiswa.view_akademik_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="js_class">readnilai_button</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

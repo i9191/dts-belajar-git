@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <!-- Define the new menu -->
+        <record id="new_menu" model="ir.ui.menu">
+            <field name="name">New Menu</field>
+            <field name="sequence" eval="10"/>
+        </record>
+
+        <!-- Menu item to access the list view -->
+        <menuitem id="menu_student_achievements" name="Student Achievements" action="action_student_achievements"/>
+    </data>
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Group Definition -->
+        <record id="group_manager" model="res.groups">
+            <field name="name">Manager</field>
+        </record>
+    </data>
+</odoo>

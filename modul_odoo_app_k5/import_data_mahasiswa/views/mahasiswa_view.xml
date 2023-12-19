@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_mahasiswa_tree" model="ir.ui.view">
+            <field name="name">mahasiswa.data.tree</field>
+            <field name="model">mahasiswa.data</field>
+            <field name="arch" type="xml">
+                <tree string="Data Mahasiswa">
+                    <field name="nim"/>
+                    <field name="nama"/>
+                    <field name="prestasi"/>
+                    <field name="kompen"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_mahasiswa_form" model="ir.ui.view">
+            <field name="name">mahasiswa.data.form</field>
+            <field name="model">mahasiswa.data</field>
+            <field name="arch" type="xml">
+                <form string="Data Mahasiswa">
+                    <sheet>
+                        <group>
+                            <field name="nim"/>
+                            <field name="nama"/>
+                            <field name="prestasi"/>
+                            <field name="kompen"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_mahasiswa_read_csv" model="ir.ui.view">
+            <field name="name">mahasiswa.data.read_csv</field>
+            <field name="model">wizard.datamahasiswa</field>
+            <field name="arch" type="xml">
+                <form string="Baca Data Mahasiswa dari CSV">
+                    <sheet>
+                        <group>
+                            <field name="file_csv" widget="binary" string="File CSV"/>
+                        </group>
+                        <footer>
+                            <button name="read_csv" string="Baca Data" type="object" class="btn-primary"/>
+                            <button string="Close" class="btn-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_mahasiswa" model="ir.actions.act_window">
+            <field name="name">Data Mahasiswa</field>
+            <field name="res_model">mahasiswa.data</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Klik tombol Read CSV untuk menambahkan data mahasiswa baru.
+                </p>
+            </field>
+        </record>
+        
+        <record id="action_mahasiswa_read_csv" model="ir.actions.act_window">
+            <field name="name">Baca Data Mahasiswa dari CSV</field>
+            <field name="res_model">wizard.datamahasiswa</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_mahasiswa_read_csv"/>
+        </record>
+
+        <record id="ir_actions_mahasiswa_read_csv" model="ir.actions.server">
+            <field name="name">Baca Data Mahasiswa dari CSV</field>
+            <field name="model_id" ref="model_mahasiswa_data"/>
+            <field name="state">code</field>
+            <field name="code">action = model.action_mahasiswa_read_csv()</field>
+            <field name="binding_model_id" ref="model_mahasiswa_data"/>
+            <field name="binding_type">action</field>
+        </record>
+
+        <!-- definisikan menu untuk mengakses action -->
+        <menuitem id="menu_mahasiswa" name="Data Mahasiswa" action="action_mahasiswa" parent="menu_akademik"/>
+    </data>
+    <record id="mahasiswa_tree_inherit_js_class" model="ir.ui.view">
+        <field name="name">mahasiswa.data.tree.inherit</field>
+        <field name="model">mahasiswa.data</field>
+        <field name="inherit_id" ref="import_data_mahasiswa.view_mahasiswa_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="js_class">readmhs_button</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

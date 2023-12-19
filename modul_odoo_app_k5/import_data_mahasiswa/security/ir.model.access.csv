@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mahasiswa_dataakademik,Mahasiswa Data Akademik,model_mahasiswa_dataakademik,base.group_system,1,1,1,1
+access_wizard_dataakademik_manager,Wizard Mahasiswa Data Akademik Manager,model_wizard_dataakademik_csv,base.group_system,1,1,1,1

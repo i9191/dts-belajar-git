@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="model_matakuliah_tree_view" model="ir.ui.view">
+            <field name="name">mahasiswa.data.matkul.tree</field>
+            <field name="model">mahasiswa.data.matkul</field>
+            <field name="arch" type="xml">
+                <tree string="Matakuliah">
+                    <field name="kode"/>
+                    <field name="matkul"/>
+                    <field name="sks"/>
+                    <field name="jam"/>
+                </tree>
+            </field>
+        </record>
+        <record id="model_matakuliah_form_view" model="ir.ui.view">
+            <field name="name">mahasiswa.data.matkul.form</field>
+            <field name="model">mahasiswa.data.matkul</field>
+            <field name="arch" type="xml">
+                <form string="Matakuliah">
+                    <sheet>
+                        <group>
+                            <field name="kode"/>
+                            <field name="matkul"/>
+                            <field name="sks"/>
+                            <field name="jam"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <record id="action_matkul_akademik" model="ir.actions.act_window">
+            <field name="name">Data Mata Kuliah Akademik</field>
+            <field name="res_model">mahasiswa.data.matkul</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    
+        <menuitem id="menu_matkul_akademik" name="Mata Kuliah Akademik" action="action_matkul_akademik" parent="menu_akademik"/>
+        
+        <record id="view_matkul_read_csv" model="ir.ui.view">
+            <field name="name">wizard.readcsv.matkul.read_csv</field>
+            <field name="model">wizard.readcsv.matkul</field>
+            <field name="arch" type="xml">
+                <form string="Baca Data Mata Kuliah Akademik dari CSV">
+                    <sheet>
+                        <group>
+                            <field name="file_csv" widget="binary" string="File CSV"/>
+                        </group>
+                        <footer>
+                            <button name="read_csv" string="Baca Data" type="object" class="btn-primary"/>
+                            <button string="Close" class="btn-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <record id="action_matkul_read_csv" model="ir.actions.act_window">
+            <field name="name">Baca Data Mata Kuliah Akademik dari CSV</field>
+            <field name="res_model">wizard.readcsv.matkul</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_matkul_read_csv"/>
+        </record>
+    
+        <record id="ir_actions_matkul_read_csv" model="ir.actions.server">
+            <field name="name">Baca Data Mata Kuliah Akademik dari CSV</field>
+            <field name="model_id" ref="model_mahasiswa_data_matkul"/>
+            <field name="state">code</field>
+            <field name="code">action = model.action_matkul_read_csv()</field>
+            <field name="binding_model_id" ref="model_mahasiswa_data_matkul"/>
+            <field name="binding_type">action</field>
+        </record>
+    </data>
+
+    <record id="matkul_tree_inherit_js_class" model="ir.ui.view">
+        <field name="name">mahasiswa.data.matkul.tree.inherit</field>
+        <field name="model">mahasiswa.data.matkul</field>
+        <field name="inherit_id" ref="import_data_mahasiswa.model_matakuliah_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="js_class">readmatkul_button</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
