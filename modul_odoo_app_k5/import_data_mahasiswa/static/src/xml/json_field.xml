@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <template id="json_field_view" name="JSON Field View" inherit_id="web.webclient_bootstrap">
-        <xpath expr="//div [1]" position="inside">
-            <t t-call-assets="web.assets_backend" t-css="false"/>
-        </xpath>
-    </template>
-</odoo>

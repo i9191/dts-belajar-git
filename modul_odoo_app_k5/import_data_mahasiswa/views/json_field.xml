@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <template id="import_data_mahasiswa_backend" name="import_data_mahasiswa assets" inherit_id="web.assets_backend">
-        <xpath expr="//tree" position="attribute">
-            <script type="text/javascript" src="/import_data_mahasiswa/assets/src/js/json_field.js"></script>
-        </xpath>
-    </template>
-</odoo>
